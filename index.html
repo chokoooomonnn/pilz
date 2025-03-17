@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love</title>
+    <style>
+        body {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    background-color: rgb(213, 181, 202); /* Set the background to white */
+    
+    background-size: cover;
+    color: #ff4081;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+       
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        #kitty-gif {
+            width: 200px; /* Resize the GIF */
+            height: auto; /* Maintain aspect ratio */
+            margin-right: 20px; /* Space between GIF and text */
+        }
+
+        .text-container {
+            text-align: left;
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+
+        .button-container {
+            margin-top: 30px;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        #yes {
+            background-color: #ff4081;
+            color: white;
+        }
+
+        #yes:hover {
+            background-color: #e91e63;
+        }
+
+        #no {
+            background-color: #fff;
+            color: #ff4081;
+            border: 2px solid #ff4081;
+            position: absolute;
+        }
+
+        #love-letter {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #continue-button {
+            margin-top: 20px;
+        }
+
+        #question-container {
+            display: none;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        #question-container img {
+            margin-top: 20px;
+            width: 200px;
+            height: auto;
+        }
+
+        #gif-display img {
+            margin-top: 20px;
+            width: 200px;
+            height: auto;
+        }
+
+        #next-page-button {
+            margin-top: 20px;
+        }
+
+        #marriage-question-container {
+            display: none;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        #something-for-you-button {
+            margin-top: 20px;
+        }
+
+        #something-for-you-message {
+            display: none;
+            margin-top: 20px;
+            font-size: 20px;
+            text-align: center;
+            color: #ff4081;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Initial content -->
+        <div id="initial-content">
+            
+            <div class="text-container">
+                <h1>Do you love me? ❤️</h1>
+                <img id="kitty-gif" src="https://media1.tenor.com/m/HdS2y0Jc6TUAAAAC/kitty.gif" alt="Cute Kitty GIF">
+                <div class="button-container">
+                    <button id="yes" onclick="showLoveLetter()">Yes</button>
+                    <button id="no" onmouseover="moveNoButton()">No</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Love Letter -->
+        <div id="love-letter">
+            <h2>My Love Letter to You ❤️</h2>
+            <p>My dearest love,</p>
+            <p>From the moment we met, you’ve made my world brighter and my heart happier. Every moment with you is precious, and I can't wait to create more beautiful memories together. You are my everything. Happy 1-month anniversary! 💖 and i will always love you till the day i die i lobve you so much aishuu🎀🎀🎀🎀</p>
+            <p>Forever yours,</p>
+            <p><strong>Your Love</strong></p>
+
+            <!-- Continue Button -->
+            <button id="continue-button" onclick="showQuestion()">Continue</button>
+        </div>
+
+        <!-- Question Page -->
+        <div id="question-container">
+            <h1>Will you be mine forever? 💖</h1>
+            <div class="button-container">
+                <button id="yes-forever" onclick="showGifYes()">Yes</button>
+                <button id="no-forever" onclick="showGifNo()">No</button>
+            </div>
+
+            <!-- GIF display -->
+            <div id="gif-display">
+                <!-- GIFs will be displayed here based on the answer -->
+            </div>
+        </div>
+
+        <!-- Next Page Button -->
+        <div id="next-page-container" style="display: none;">
+            <button id="next-page-button" onclick="showMarriageQuestion()">Next Page</button>
+        </div>
+
+        <!-- Marriage Proposal Page -->
+        <div id="marriage-question-container">
+            <h1>Will you marry me? 💍</h1>
+            <div class="button-container">
+                <button id="yes-marriage" onclick="showMarriageMessage()">Yes</button>
+            </div>
+
+            <div id="marriage-message"></div>
+        </div>
+
+        <!-- Something for You Button -->
+        <div id="something-for-you-container" style="display: none;">
+            <button id="something-for-you-button" onclick="showSomethingForYouMessage()">Something for You</button>
+        </div>
+
+        <!-- Heartfelt Message -->
+        <div id="something-for-you-message">
+            <p>Love Across the Distance ❤️✨</p>
+            <p>We’ve never met, yet here you stay,<br>
+               In every thought, in every day.<br>
+               A stranger once, now all to me,<br>
+               A love so deep, yet wild and free.</p>
+            <p>Your words feel like a gentle touch,<br>
+               A warmth I crave, I love so much.<br>
+               Though miles may stand between our fate,<br>
+               My heart knows well—it’s worth the wait.</p>
+            <p>One day soon, our hands will meet,<br>
+               Our hearts will dance, our souls complete.<br>
+               Until that time, just know it’s true,<br>
+               Every heartbeat whispers I love you ❤️🌙✨</p>
+        </div>
+    </div>
+
+    <script>
+        function showLoveLetter() {
+            document.getElementById("love-letter").style.display = "block";
+            document.getElementById("initial-content").style.display = "none";
+        }
+
+        function moveNoButton() {
+            var noButton = document.getElementById("no");
+            var x = Math.random() * (window.innerWidth - noButton.clientWidth);
+            var y = Math.random() * (window.innerHeight - noButton.clientHeight);
+            noButton.style.left = x + "px";
+            noButton.style.top = y + "px";
+        }
+
+        function showQuestion() {
+            document.getElementById("love-letter").style.display = "none";
+            document.getElementById("question-container").style.display = "block";
+        }
+
+        function showGifYes() {
+            // Display the positive gif for "Yes"
+            var gifDisplay = document.getElementById("gif-display");
+            gifDisplay.innerHTML = '<img src="https://media.tenor.com/Bv7j0xtaH70AAAAi/cute-cat.gif" alt="Cute Cat Gif">';
+
+            // Disable further buttons
+            document.getElementById("yes-forever").disabled = true;
+            document.getElementById("no-forever").disabled = true;
+
+            // Show Next Page Button
+            document.getElementById("next-page-container").style.display = "block";
+        }
+
+        function showGifNo() {
+            // Display the sad gif for "No"
+            var gifDisplay = document.getElementById("gif-display");
+            gifDisplay.innerHTML = '<img src="https://media1.tenor.com/m/m3A4-216JFAAAAAd/bard1a-sad-cat.gif" alt="Sad Cat Gif">';
+
+            // Ask the question again after a delay
+            setTimeout(function() {
+                alert("Please, say yes!");
+                document.getElementById("gif-display").innerHTML = ""; // Reset GIF
+            }, 2000);
+        }
+
+        function showMarriageQuestion() {
+            // Hide the previous content and show marriage question page
+            document.getElementById("question-container").style.display = "none";
+            document.getElementById("next-page-container").style.display = "none";
+            document.getElementById("marriage-question-container").style.display = "block";
+        }
+
+        function showMarriageMessage() {
+            // Show the message after "Yes" to "Will you marry me?"
+            var marriageMessage = document.getElementById("marriage-message");
+            marriageMessage.innerHTML = '<p>I knew it dumbo, I love you! ❤️</p>';
+            marriageMessage.innerHTML += '<img src="https://media1.tenor.com/m/qR1sGRNmfqsAAAAC/besito-catlove.gif" alt="Love Gif">';
+
+            // Show the "Something for You" button
+            document.getElementById("something-for-you-container").style.display = "block";
+        }
+
+        function showSomethingForYouMessage() {
+            // Show the heartfelt message
+            document.getElementById("something-for-you-message").style.display = "block";
+        }
+    </script>
+</body>
+</html>
+
